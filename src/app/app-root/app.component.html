@@ -1,0 +1,119 @@
+<div id="toolbar" fxLayout fxLayoutAlign="start center" fxLayoutGap="3%">
+    <button mat-icon-button (click)="toggleSidenav()" aria-controls="sidenav" class="home">
+        <mat-icon>{{icon}}</mat-icon>
+    </button>
+    <button mat-icon-button role="navigation" fxHide.lt-lg class="home">
+      <mat-icon>home</mat-icon>
+    </button>
+    <a href="" class="link" fxHide.lt-lg id="one">O&nbsp;NAMA</a>
+    <a href="" class="link" fxHide.lt-lg id="two">PROJEKTI</a>
+    <a href="" class="link" fxHide.lt-lg id="three">DOKUMENTI&nbsp;I&nbsp;PUBLIKACIJE</a>
+    <a href="" class="link" fxHide.lt-lg id="four">OSTALO</a>
+    <div fxLayout fxLayoutGap="30px" fxFlex="100%" fxLayoutAlign="end center" id="brands">
+      <!--<mat-form-field *ngIf="search">
+          <input matInput type="text" placeholder="Pretrazi">
+          <button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+              <mat-icon>search</mat-icon>
+          </button>
+      </mat-form-field>-->
+        <app-search-input *ngIf="search"></app-search-input>
+        <button mat-icon-button class="home" (click)="toggleSearch()">
+          <mat-icon id="search">{{searchIcon}}</mat-icon>
+        </button>
+    </div>
+</div>
+<div id="side" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px" role="navigation">
+    <a href=""><fa-icon [icon]="faFacebook" size="2x"></fa-icon></a>
+    <a href=""><fa-icon [icon]="faInstagram" size="2x"></fa-icon></a>
+    <a href=""><fa-icon [icon]="faTwitter" size="2x"></fa-icon></a>
+</div>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav role="navigation" fixedInViewport="true">
+    <div aria-hidden="true" id="prazni"></div>
+    <mat-nav-list disableRipple="true">
+      <mat-list-item [routerLink]="['/Naslovna']" fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
+        <mat-icon matListIcon>home</mat-icon>
+        <a>&nbsp;&nbsp;Naslovna</a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <h2 matSubheader fxLayout fxLayoutAlign="start center"><mat-icon>help_outline</mat-icon><span>&nbsp;O Nama</span></h2>
+      <mat-divider></mat-divider>
+      <mat-list-item [routerLink]="['/O nama']"  fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
+        <mat-icon matListIcon>fingerprint</mat-icon>
+        <a>&nbsp;&nbsp;O Nama</a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item [routerLink]="['/O nama/Osnivaci']"  fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
+        <mat-icon matListIcon>accessibility_new</mat-icon>
+        <a>&nbsp;&nbsp;Osnivaci</a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item [routerLink]="['/Admin/Svi korisnici']"  fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
+        <mat-icon matListIcon>account_tree</mat-icon>
+        <a>&nbsp;&nbsp;Unutrasnja Organizacija</a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item [routerLink]="['/Admin/Svi korisnici']"  fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
+        <mat-icon matListIcon>group</mat-icon>
+        <a>&nbsp;&nbsp;Tim i MI Boke</a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <h2 matSubheader fxLayout fxLayoutAlign="start center"><mat-icon>work_outline</mat-icon><span>&nbsp;Projekti</span></h2>
+      <mat-divider></mat-divider>
+      <mat-list-item [routerLink]="['/Admin/Dodaj korisnika']" fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
+        <mat-icon matListIcon>network_check</mat-icon>
+       <a>&nbsp;&nbsp;Projekti u realizaciji</a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item [routerLink]="['/Admin/Dodaj korisnika']" fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
+        <mat-icon matListIcon>done_all</mat-icon>
+       <a>&nbsp;&nbsp;Realizovani projekti</a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <h2 matSubheader fxLayout fxLayoutAlign="start center"><mat-icon>folder_shared</mat-icon><span>&nbsp;Dokumenti i Publikacije</span></h2>
+      <mat-divider></mat-divider>
+      <mat-list-item [routerLink]="['/Korisnici']" fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
+        <mat-icon matListIcon>description</mat-icon>
+        <a>&nbsp;&nbsp;Opsta akta i MI Boke</a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item [routerLink]="['/Opcije']" fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
+        <mat-icon matListIcon>description</mat-icon>
+        <a>&nbsp;&nbsp;Planovi i izvjestaji o radu</a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item [routerLink]="['/Opcije']" fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
+        <mat-icon matListIcon>picture_as_pdf</mat-icon>
+        <a>&nbsp;&nbsp;Izdati materijali</a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <h2 matSubheader fxLayout fxLayoutAlign="start center"><mat-icon>add_circle</mat-icon><span>&nbsp;Ostalo</span></h2>
+      <mat-divider></mat-divider>
+      <mat-list-item [routerLink]="['/Opcije']" fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
+        <mat-icon matListIcon>pan_tool</mat-icon>
+        <a>&nbsp;&nbsp;Partneri</a>
+      </mat-list-item>
+      <mat-list-item [routerLink]="['/Opcije']" fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
+        <mat-icon matListIcon>card_giftcard</mat-icon>
+        <a>&nbsp;&nbsp;Donatori i sponzori</a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item [routerLink]="['/Opcije']" fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
+        <mat-icon matListIcon>photo_library</mat-icon>
+        <a>&nbsp;&nbsp;Galerija</a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item [routerLink]="['/Opcije']" fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
+        <mat-icon matListIcon>contacts</mat-icon>
+        <a>&nbsp;&nbsp;Kontaktirajte nas</a>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <main>
+      <app-naslovna></app-naslovna>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

@@ -1,0 +1,103 @@
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+  height: 100%;
+}
+mat-sidenav{
+  width: 20%;
+  @media screen and (max-width: 599px) {
+    width: 70%;
+  }
+}
+a{
+  color: white;
+}
+.small{
+  font-size: 15px;
+  color: white;
+}
+
+#prazni{
+  height: 100px;
+}
+#toolbar{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100% !important;
+  z-index: 1000;
+  background-color: #055891;
+  color: white;
+}
+main{
+  margin-top: 60px;
+  padding: 0px 10px;
+}
+.link{
+  padding: 5px 5px 10px 5px;
+  margin: 30px 0 0 0;
+  font-weight: 400;
+  font-size: 20px;
+  color: white;
+}
+.link:hover{
+  background-color: #ed5252;
+}
+#toolbar button{
+  display: inline-block;
+  margin: 25px 0 0 10px;
+}
+#brands{
+  margin-right: 10px !important;
+}
+.home{
+  display: inline-block;
+  border-bottom: 3px solid #0084da;
+}
+#one{
+  display: inline-block;
+  border-bottom: 3px solid #ed5252;
+}
+#two{
+  display: inline-block;
+  border-bottom: 3px solid #ba6ae8;
+}
+#three{
+  display: inline-block;
+  border-bottom: 3px solid #91ba76;
+}
+#four{
+  display: inline-block;
+  border-bottom: 3px solid #8b90f8;
+}
+
+#search{
+  font-size: 30px;
+}
+
+#side{
+  position: fixed;
+  left: calc(100% - 53px);
+  top: calc(50% - 78px);
+  z-index: 100;
+  background-color: #055891;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+mat-list-item:hover{
+  background-color: #0084da !important;
+  color: white !important;
+}
+
+mat-form-field{
+  margin: 25px 20px 0 0 !important;
+}
+
+.mat-form-field-label{
+  color: white !important;
+}
+.mat-form-field-underline{
+  background-color: white !important;
+}
+main{
+  margin-top: 100px;
+}
