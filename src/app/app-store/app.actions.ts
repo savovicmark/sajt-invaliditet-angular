@@ -2,6 +2,7 @@ import { Action } from '@ngrx/store';
 import { ArticleModel } from '../Models/article.model';
 import { CommentModel } from '../Models/comment.model';
 import { Update } from '@ngrx/entity';
+import { UserModel } from '../Models/user.model';
 
 export enum AppActionTypes {
   LoadAllArticles = '[Articles Page] Load All Articles',
@@ -18,7 +19,30 @@ export enum AppActionTypes {
   CommentPostError = '[API] Error Posting Comment',
   PostReplyToComment = '[Article Page] Post Reply To Comment',
   ReplyPosted = '[API] Reply Posted',
-  ReplyPostError = '[API] Reply Post Error'
+  ReplyPostError = '[API] Reply Post Error',
+  DeleteComment = '[Article Page] Delete Comment',
+  CommentDeleted = '[API] Comment Deleted',
+  CommentDeleteError = '[API] Comment Delete Error',
+  DeleteReply = '[Article] Delete Reply',
+  ReplyDeleted = '[API] Reply Deleted',
+  ReplyDeleteError = '[API] Reply Delete Error',
+  // ======================= admin====================
+  PostArticle = '[Admin] Post Article',
+  ArticlePosted = '[API] Article Posted',
+  ArticlePostError = '[API] Article Post Error',
+  UpdateArticle = '[Admin] Update Article',
+  ArticleUpdated = '[API] Article Updated',
+  ArticleUpdateError = '[API] Article Update Error',
+  DeleteArticle = '[Admin] Delete Article',
+  ArticleDeleted = '[API] Article Deleted',
+  ArticleDeleteError = '[API] Article Delete Error',
+  // ============================================================
+  PostUser = '[Sign In] Post User',
+  UserPosted = '[API] User posted',
+  UserPostError = '[API] Post User Error',
+  LogInUser = '[Log In] Log In User',
+  UserLoggedIn = '[API] Logged In',
+  LogInError = '[API] Log In Error'
 }
 
 export class LoadAllArticlesAction implements Action {
@@ -90,6 +114,96 @@ export class ReplyPostError implements Action {
   readonly type = AppActionTypes.ReplyPostError;
 }
 
+export class DeleteCommentAction implements Action {
+  readonly type = AppActionTypes.DeleteComment;
+  constructor(public payload: {commentId: string}) {}
+}
+
+export class CommentDeletedAction implements Action {
+  readonly type = AppActionTypes.CommentDeleted;
+  constructor(public payload: {commentId: string}) {}
+}
+
+export class CommentDeleteErrorAction implements Action {
+  readonly type = AppActionTypes.CommentDeleteError;
+}
+
+export class DeleteReplyAction implements Action {
+  readonly type = AppActionTypes.DeleteReply;
+  constructor(public payload: {commentId: string, replyId: string}) {}
+}
+
+export class ReplyDeletedAction implements Action {
+  readonly type = AppActionTypes.ReplyDeleted;
+  constructor(public payload: Update<CommentModel>) {}
+}
+
+export class ReplyDeleteErrorAction implements Action {
+  readonly type = AppActionTypes.ReplyDeleteError;
+}
+
+// ======================admin actions=========================
+
+export class PostArticleAction implements Action {
+  readonly type = AppActionTypes.PostArticle;
+  constructor(public payload: {article: ArticleModel}) {}
+}
+
+export class ArticlePostedAction implements Action {
+  readonly type = AppActionTypes.ArticlePosted;
+  constructor(public payload: {article: ArticleModel}) {}
+}
+
+export class ArticlePostErrorAction implements Action {
+  readonly type = AppActionTypes.ArticlePostError;
+}
+
+export class UpdateArticleAction implements Action {
+  readonly type = AppActionTypes.UpdateArticle;
+  constructor(public payload: {articleId: string, article: ArticleModel}) {}
+}
+
+export class ArticleUpdatedAction implements Action {
+  readonly type = AppActionTypes.ArticleUpdated;
+  constructor(public payload: Update<ArticleModel>) {}
+}
+
+export class ArticleUpdateErrorAction implements Action {
+  readonly type = AppActionTypes.ArticleUpdateError;
+}
+
+export class DeleteArticleAction implements Action {
+  readonly type = AppActionTypes.DeleteArticle;
+  constructor(public payload: {articleId: string}) {}
+}
+
+export class ArticleDeletedAction implements Action {
+  readonly type = AppActionTypes.ArticleDeleted;
+  constructor(public payload: {articleId: string}) {}
+}
+
+export class ArticleDeleteError implements Action {
+  readonly type = AppActionTypes.ArticleDeleteError;
+}
+
+// ===========================================================================================
+
+export class PostUserAction implements Action {
+  readonly type = AppActionTypes.PostUser;
+  constructor(public payload: {user: UserModel}) {}
+}
+
+export class UserPostedAction implements Action {
+  readonly type = AppActionTypes.UserPosted;
+  constructor(public payload: {user: UserModel}) {}
+}
+
+export class UserPostErrorAction implements Action {
+  readonly type = AppActionTypes.UserPostError;
+}
+
+// ========= za login ostalo da uradim, i da prepravim reducer poslije
+
 export type AppActions = LoadAllArticlesAction
                         | AllArticlesLoadedAction
                         | AllArticlesLoadErrorAction
@@ -104,4 +218,22 @@ export type AppActions = LoadAllArticlesAction
                         | CommentPostErrorAction
                         | PostReplyToCommentAction
                         | ReplyPostedAction
-                        | ReplyPostError;
+                        | ReplyPostError
+                        | DeleteCommentAction
+                        | CommentDeletedAction
+                        | CommentDeleteErrorAction
+                        | DeleteReplyAction
+                        | ReplyDeletedAction
+                        | ReplyDeleteErrorAction
+                        | PostArticleAction
+                        | ArticlePostedAction
+                        | ArticlePostErrorAction
+                        | UpdateArticleAction
+                        | ArticleUpdatedAction
+                        | ArticleUpdateErrorAction
+                        | DeleteArticleAction
+                        | ArticleDeletedAction
+                        | ArticleDeleteError
+                        | PostUserAction
+                        | UserPostedAction
+                        | UserPostErrorAction;

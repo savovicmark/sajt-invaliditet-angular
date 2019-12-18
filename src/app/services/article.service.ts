@@ -32,4 +32,10 @@ export class ArticleService {
     return this.http.patch<ArticleModel>(`${this.baseUrl}/articles`, {articleId, article});
   }
 
+  deleteArticleById(articleId: string): Observable<ArticleModel> {
+    return this.http.delete<ArticleModel>(`${this.baseUrl}/articles`, {
+      params: new HttpParams().set('articleId', articleId)
+    });
+  }
+
 }

@@ -3,4 +3,7 @@ export interface ArticleModel {
   naslov: string;
   text: string;
   image?: string;
+  type?: string;
+  realizovan?: boolean;
+  createdAt?: Date;
 }

@@ -1,0 +1,10 @@
+section{
+  background-color: lightslategray;
+  padding: 20px 0px;
+}
+form{
+  width: 30%;
+  @media screen and (max-width: 599px){
+    width: 100%;
+  }
+}

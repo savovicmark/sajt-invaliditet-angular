@@ -1,0 +1,30 @@
+<section fxLayout fxLayoutAlign="center start">
+  <form [formGroup]="articleForm" fxLayout="column" fxLayoutGap="20px" (ngSubmit)="submitArticle()">
+    <mat-form-field>
+      <mat-label>Naslov clanka</mat-label>
+      <textarea matInput
+      formControlName="naslov"
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Text clanka</mat-label>
+      <textarea matInput
+      formControlName="text"
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"></textarea>
+    </mat-form-field>
+    <div>
+      <p>Izaberi sliku za clanak:</p>
+      <input type="file" multiple="false" (change)="onImageSelect($event)">
+    </div>
+    <label id="tipclanka">Izaberi tip clanka:</label>
+    <mat-radio-group aria-labelledby="tipclanka" fxLayout fxLayoutGap="20px" formControlName="type">
+      <mat-radio-button value="vijest">Vijest</mat-radio-button>
+      <mat-radio-button value="projekat">Projekat</mat-radio-button>
+    </mat-radio-group>
+    <button type="submit" mat-raised-button color="warn">Posalji clanak</button>
+  </form>
+</section>

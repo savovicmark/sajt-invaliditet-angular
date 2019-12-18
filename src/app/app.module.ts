@@ -14,22 +14,31 @@ import { SearchInputComponent } from './search-input/search-input.component';
 import { NaslovnaComponent } from './naslovna/naslovna.component';
 import { AdminModule } from './admin.module';
 import { environment } from 'src/environments/environment';
+import { AppEffects } from './app-store/app.effects';
+import { articleReducer, commentReducer, userReducer } from './app-store/app.reducers';
+import { PostUserComponent } from './post-user/post-user.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchInputComponent,
-    NaslovnaComponent
+    NaslovnaComponent,
+    PostUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
     MaterialModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot({articles: articleReducer,
+                        comments: commentReducer,
+                        user: userReducer
+                        }),
+    EffectsModule.forRoot([AppEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production

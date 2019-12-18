@@ -27,4 +27,16 @@ export class CommentService {
     return this.http.post<CommentModel>(`${this.baseUrl}/comments/reply`, {commentId, userId, text});
   }
 
+  deleteComment(commentId: string): Observable<CommentModel> {
+    return this.http.delete<CommentModel>(`${this.baseUrl}/comments/comment`, {
+      params: new HttpParams().set('commentId', commentId)
+    });
+  }
+
+  deleteReply(commentId: string, replyId: string): Observable<CommentModel> {
+    return this.http.delete<CommentModel>(`${this.baseUrl}/comments/reply`, {
+      params: new HttpParams().set('replyId', replyId).set('commentId', commentId)
+    });
+  }
+
 }

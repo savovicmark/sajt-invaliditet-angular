@@ -1,22 +1,28 @@
 import { NgModule } from '@angular/core';
-import { MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule, MatButtonModule, MatInputModule } from '@angular/material';
+import * as material from '@angular/material';
 @NgModule({
   declarations: [],
   imports: [
-    MatToolbarModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatButtonModule,
-    MatInputModule
+    material.MatToolbarModule,
+    material.MatSidenavModule,
+    material.MatIconModule,
+    material.MatListModule,
+    material.MatButtonModule,
+    material.MatInputModule,
+    material.MatRadioModule,
+    material.MatCardModule,
+    material.MatIconModule
   ],
   exports: [
-    MatToolbarModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatButtonModule,
-    MatInputModule
+    material.MatToolbarModule,
+    material.MatSidenavModule,
+    material.MatIconModule,
+    material.MatListModule,
+    material.MatButtonModule,
+    material.MatInputModule,
+    material.MatRadioModule,
+    material.MatCardModule,
+    material.MatIconModule
   ]
 })
 export class MaterialModule { }
