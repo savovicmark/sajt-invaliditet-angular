@@ -1,7 +1,7 @@
 <section>
   <div fxLayout fxLayoutGap="30px" fxLayoutAlign="start center">
     <h2>POSLIJEDNJE VIJESTI</h2>
-    <mat-icon class="plava">double_arrow</mat-icon>
+    <mat-icon class="plava">arrow_downward</mat-icon>
   </div>
   <div fxLayout fxLayoutGap="32px" fxLayoutAlign="start" fxLayout.lt-sm="column">
     <mat-card *ngFor="let article of vijesti" fxFlex="30%" fxFlex.lt-sm="100%" fxLayout="column">
@@ -24,17 +24,22 @@
         <button mat-icon-button aria-label="pregledaj vijest" fxFlex="30%">
           <mat-icon>comment</mat-icon>
         </button>
-        <button mat-icon-button aria-label="pregledaj vijest" fxFlex="30%">
+        <button mat-icon-button aria-label="pregledaj vijest" fxFlex="30%" (click)="navigateToArticle(article._id)">
           <mat-icon>double_arrow</mat-icon>
         </button>
       </mat-card-actions>
     </mat-card>
   </div>
+  <div fxLayout fxLayoutGap="30px" fxLayoutAlign="end center" role="navigation" [routerLink]="['/vijesti']" >
+    <h2>SVE VIJESTI</h2>
+    <mat-icon class="plava">double_arrow</mat-icon>
+  </div>
 </section>
+<mat-divider></mat-divider>
 <section>
   <div fxLayout fxLayoutGap="30px" fxLayoutAlign="start center">
     <h2>POSLIJEDNJI PROJEKTI</h2>
-    <mat-icon class="plava">double_arrow</mat-icon>
+    <mat-icon class="plava">arrow_downward</mat-icon>
   </div>
   <div fxLayout fxLayoutGap="32px" fxLayoutAlign="start" fxLayout.lt-sm="column">
     <mat-card *ngFor="let article of projekti" fxFlex="30%" fxFlex.lt-sm="100%" fxLayout="column">
@@ -51,13 +56,13 @@
         <p>{{article.text}}</p>
       </mat-card-content>
       <mat-card-actions fxLayout fxLayoutAlign="center end" fxLayoutGap="15%">
-        <button mat-icon-button aria-label="pregledaj vijest" fxFlex="30%">
+        <button mat-icon-button aria-label="broj pregleda" fxFlex="30%">
           <mat-icon>remove_red_eye</mat-icon>
         </button>
-        <button mat-icon-button aria-label="pregledaj vijest" fxFlex="30%">
+        <button mat-icon-button aria-label="broj komentara" fxFlex="30%">
           <mat-icon>comment</mat-icon>
         </button>
-        <button mat-icon-button aria-label="pregledaj vijest" fxFlex="30%">
+        <button mat-icon-button aria-label="pregledaj projekat" fxFlex="30%" (click)="navigateToArticle(article._id)" >
           <mat-icon>double_arrow</mat-icon>
         </button>
       </mat-card-actions>

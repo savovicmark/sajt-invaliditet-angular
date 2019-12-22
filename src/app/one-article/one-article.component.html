@@ -1,0 +1,38 @@
+<section fxLayout fxLayoutAlign="center start">
+<mat-card fxLayout="column">
+  <mat-card-header>
+    <mat-card-title>
+      {{article?.naslov}}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{article?.createdAt | date:'medium'}}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="baseUrl + '/' + '/images/' + article?.image" *ngIf="article?.image" fxFlexAlign="center">
+  <mat-card-content>
+    <p>{{article?.text}}</p>
+    <div *ngIf="viewComments">
+      <div *ngFor="let comment of comments">
+        <app-komentar [comment]="comment"></app-komentar>
+      </div>
+      <mat-form-field color="primary">
+        <mat-label>Posalji komentar</mat-label>
+        <textarea matInput
+            [formControl]="postComment"
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"></textarea>
+        <button mat-raised-button matSuffix color="primary" (click)="postNewComment()">Posalji</button>
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+  <mat-card-actions fxLayout fxLayoutAlign="center end" fxLayoutGap="15%">
+    <button mat-icon-button aria-label="pregledaj vijest" fxFlex="30%">
+      <mat-icon>remove_red_eye</mat-icon>
+    </button>
+    <button mat-icon-button aria-label="pregledaj vijest" fxFlex="30%" (click)="toggleComments()">
+      <mat-icon>comment</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
+</section>

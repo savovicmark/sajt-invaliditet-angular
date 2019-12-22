@@ -11,7 +11,17 @@ export interface ReplyModel {
 export interface CommentModel {
   _id?: string;
   text: string;
-  userId?: UserModel;
-  articleId?: ArticleModel;
-  replies?: ReplyModel[] | [];
+  user?: UserModel;
+  article?: string;
+  replies?: ReplyModel[];
+  createdAt?: Date;
+}
+
+export interface CommentStringModel {
+  _id?: string;
+  text: string;
+  userId?: string;
+  articleId?: string;
+  replies?: string[];
+  createdAt?: Date;
 }

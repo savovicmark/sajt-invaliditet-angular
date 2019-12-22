@@ -2,7 +2,7 @@
     <button mat-icon-button (click)="toggleSidenav()" aria-controls="sidenav" class="home">
         <mat-icon>{{icon}}</mat-icon>
     </button>
-    <button mat-icon-button role="navigation" fxHide.lt-lg class="home">
+    <button mat-icon-button role="navigation" fxHide.lt-lg class="home" (click)="navigateToNaslovna()">
       <mat-icon>home</mat-icon>
     </button>
     <a href="" class="link" fxHide.lt-lg id="one">O&nbsp;NAMA</a>
@@ -31,12 +31,12 @@
   <mat-sidenav #sidenav role="navigation" fixedInViewport="true">
     <div aria-hidden="true" id="prazni"></div>
     <mat-nav-list disableRipple="true">
-      <mat-list-item [routerLink]="['/Naslovna']" fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
+      <mat-list-item [routerLink]="['/naslovna']" fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
         <mat-icon matListIcon>home</mat-icon>
         <a>&nbsp;&nbsp;Naslovna</a>
       </mat-list-item>
       <mat-divider></mat-divider>
-      <h2 matSubheader fxLayout fxLayoutAlign="start center"><mat-icon>help_outline</mat-icon><span>&nbsp;O Nama</span></h2>
+      <h2 matSubheader fxLayout fxLayoutAlign="start center"><mat-icon>arrow_downward</mat-icon><span>&nbsp;O Nama</span></h2>
       <mat-divider></mat-divider>
       <mat-list-item [routerLink]="['/O nama']"  fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
         <mat-icon matListIcon>fingerprint</mat-icon>
@@ -58,19 +58,19 @@
         <a>&nbsp;&nbsp;Tim i MI Boke</a>
       </mat-list-item>
       <mat-divider></mat-divider>
-      <h2 matSubheader fxLayout fxLayoutAlign="start center"><mat-icon>work_outline</mat-icon><span>&nbsp;Projekti</span></h2>
+      <h2 matSubheader fxLayout fxLayoutAlign="start center"><mat-icon>arrow_downward</mat-icon><span>&nbsp;Projekti</span></h2>
       <mat-divider></mat-divider>
-      <mat-list-item [routerLink]="['/Admin/Dodaj korisnika']" fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
+      <mat-list-item [routerLink]="['/projekti/nerealizovani']" fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
         <mat-icon matListIcon>network_check</mat-icon>
        <a>&nbsp;&nbsp;Projekti u realizaciji</a>
       </mat-list-item>
       <mat-divider></mat-divider>
-      <mat-list-item [routerLink]="['/Admin/Dodaj korisnika']" fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
+      <mat-list-item [routerLink]="['/projekti/realizovani']" fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
         <mat-icon matListIcon>done_all</mat-icon>
        <a>&nbsp;&nbsp;Realizovani projekti</a>
       </mat-list-item>
       <mat-divider></mat-divider>
-      <h2 matSubheader fxLayout fxLayoutAlign="start center"><mat-icon>folder_shared</mat-icon><span>&nbsp;Dokumenti i Publikacije</span></h2>
+      <h2 matSubheader fxLayout fxLayoutAlign="start center"><mat-icon>arrow_downward</mat-icon><span>&nbsp;Dokumenti i Publikacije</span></h2>
       <mat-divider></mat-divider>
       <mat-list-item [routerLink]="['/Korisnici']" fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
         <mat-icon matListIcon>description</mat-icon>
@@ -87,7 +87,7 @@
         <a>&nbsp;&nbsp;Izdati materijali</a>
       </mat-list-item>
       <mat-divider></mat-divider>
-      <h2 matSubheader fxLayout fxLayoutAlign="start center"><mat-icon>add_circle</mat-icon><span>&nbsp;Ostalo</span></h2>
+      <h2 matSubheader fxLayout fxLayoutAlign="start center"><mat-icon>arrow_downward</mat-icon><span>&nbsp;Ostalo</span></h2>
       <mat-divider></mat-divider>
       <mat-list-item [routerLink]="['/Opcije']" fxLayout fxLayoutAlign="start center" fxLayoutGap="20px" (click)="closeSideNav()">
         <mat-icon matListIcon>pan_tool</mat-icon>
@@ -111,8 +111,9 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <main>
+       <!--<app-vijesti></app-vijesti>
       <app-naslovna></app-naslovna>
-      <!--<app-post-user></app-post-user>
+      <app-post-user></app-post-user>
       <app-post-article></app-post-article>-->
       <router-outlet></router-outlet>
     </main>

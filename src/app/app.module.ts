@@ -18,13 +18,25 @@ import { AppEffects } from './app-store/app.effects';
 import { articleReducer, commentReducer, userReducer } from './app-store/app.reducers';
 import { PostUserComponent } from './post-user/post-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OneArticleComponent } from './one-article/one-article.component';
+import { KomentarComponent } from './komentar/komentar.component';
+import { SingleArticleComponent } from './single-article/single-article.component';
+import { VijestiComponent } from './vijesti/vijesti.component';
+import { NerealizovaniComponent } from './nerealizovani/nerealizovani.component';
+import { RealizovaniComponent } from './realizovani/realizovani.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchInputComponent,
     NaslovnaComponent,
-    PostUserComponent
+    PostUserComponent,
+    OneArticleComponent,
+    KomentarComponent,
+    SingleArticleComponent,
+    VijestiComponent,
+    NerealizovaniComponent,
+    RealizovaniComponent
   ],
   imports: [
     BrowserModule,

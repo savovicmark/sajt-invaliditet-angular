@@ -19,9 +19,9 @@ export class ArticleService {
   }
 
   getArticleById(id: string): Observable<ArticleModel> {
-    return this.http.get<ArticleModel>(`${this.baseUrl}/articles`, {
+    return this.http.get<ArticleModel>(`${this.baseUrl}/articles/${id}`/*, {
       params: new HttpParams().set('articleId', id)
-    });
+    }*/);
   }
 
   postArticle(article: ArticleModel): Observable<ArticleModel> {
@@ -33,9 +33,9 @@ export class ArticleService {
   }
 
   deleteArticleById(articleId: string): Observable<ArticleModel> {
-    return this.http.delete<ArticleModel>(`${this.baseUrl}/articles`, {
+    return this.http.delete<ArticleModel>(`${this.baseUrl}/articles/${articleId}`/*, {
       params: new HttpParams().set('articleId', articleId)
-    });
+    }*/);
   }
 
 }

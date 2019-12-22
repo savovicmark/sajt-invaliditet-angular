@@ -3,6 +3,7 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material';
 import { faTwitter, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ export class AppComponent implements OnInit {
   search = false;
   searchIcon = 'search';
 
-  constructor(public breakpointObserver: BreakpointObserver) {}
+  constructor(public breakpointObserver: BreakpointObserver,
+              private router: Router) {}
 
   ngOnInit() {
     this.breakpointObserver
@@ -57,5 +59,8 @@ export class AppComponent implements OnInit {
     } else {
       this.searchIcon = 'search';
     }
+  }
+  navigateToNaslovna() {
+    this.router.navigate(['/naslovna']);
   }
 }

@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { ArticleModel } from '../Models/article.model';
-import { CommentModel } from '../Models/comment.model';
+import { CommentModel, CommentStringModel } from '../Models/comment.model';
 import { Update } from '@ngrx/entity';
 import { UserModel } from '../Models/user.model';
 
@@ -88,7 +88,7 @@ export class AllCommentsForArticleLoadErrorAction implements Action {
 
 export class PostCommentAction implements Action {
   readonly type = AppActionTypes.PostComment;
-  constructor(public payload: {comment: CommentModel}) {}
+  constructor(public payload: {comment: CommentStringModel}) {}
 }
 
 export class CommentPostedAction implements Action {

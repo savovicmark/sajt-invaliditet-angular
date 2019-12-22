@@ -1,0 +1,34 @@
+<div id="komentar" fxLayout="column">
+  <div id="user" fxLayout fxLayoutAlign="start center" fxLayoutGap="10px">
+    <mat-icon>person</mat-icon>
+    <p class="bold">{{comment?.user.username}}</p>
+    <p class="light">{{comment?.createdAt | date: 'medium'}}</p>
+  </div>
+  <div class="comment" fxLayout="column">
+    <p class="text">{{comment?.text}}</p>
+    <button mat-icon-button (click)="odgovor = !odgovor">
+      <mat-icon>reply</mat-icon>
+    </button>
+  </div>
+  <div *ngIf="odgovor">
+    <mat-form-field>
+    <mat-label>Odgovori...</mat-label>
+    <textarea matInput [formControl]="odg"
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="5"></textarea>
+          <button mat-raised-button color="primary" matSuffix (click)="sendReply(comment.user._id, comment._id)">Posalji</button>
+    </mat-form-field>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="odgovor" *ngFor="let odg of comment?.replies">
+    <p class="bold">{{odg.user.username}}</p>
+    <div class="comment" fxLayout="column">
+      <p class="text">{{odg.text}}</p>
+      <button mat-icon-button (click)="odgovor = !odgovor">
+        <mat-icon>reply</mat-icon>
+      </button>
+    </div>
+    <mat-divider inline="true"></mat-divider>
+  </div>
+</div>
