@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommentModel } from '../Models/comment.model';
 import { FormControl } from '@angular/forms';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { AppState } from '../app-store/app.reducers';
-import { PostReplyToCommentAction } from '../app-store/app.actions';
+import { PostReplyToCommentAction, DeleteCommentAction } from '../app-store/app.actions';
+import { UserModel } from '../Models/user.model';
+import { selectUser } from '../app-store/app.selectors';
 
 @Component({
   selector: 'app-komentar',
@@ -16,15 +18,20 @@ export class KomentarComponent implements OnInit {
   comment: CommentModel;
   odgovor = false;
   odg = new FormControl('');
+  user: UserModel;
 
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
+    this.store.pipe(select(selectUser)).subscribe(user => this.user = user);
   }
 
-  sendReply(userId: string, commentId: string) {
-    this.store.dispatch(new PostReplyToCommentAction({userId, commentId, text: this.odg.value}));
+  sendReply(commentId: string) {
+    this.store.dispatch(new PostReplyToCommentAction({userId: this.user._id, commentId, text: this.odg.value}));
     this.odg.reset();
+  }
+  deleteComment(commentId: string) {
+    this.store.dispatch(new DeleteCommentAction({commentId}));
   }
 
 }

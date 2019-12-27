@@ -17,13 +17,15 @@ import { environment } from 'src/environments/environment';
 import { AppEffects } from './app-store/app.effects';
 import { articleReducer, commentReducer, userReducer } from './app-store/app.reducers';
 import { PostUserComponent } from './post-user/post-user.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { OneArticleComponent } from './one-article/one-article.component';
 import { KomentarComponent } from './komentar/komentar.component';
 import { SingleArticleComponent } from './single-article/single-article.component';
 import { VijestiComponent } from './vijesti/vijesti.component';
 import { NerealizovaniComponent } from './nerealizovani/nerealizovani.component';
 import { RealizovaniComponent } from './realizovani/realizovani.component';
+import { OdgovorComponent } from './odgovor/odgovor.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { RealizovaniComponent } from './realizovani/realizovani.component';
     SingleArticleComponent,
     VijestiComponent,
     NerealizovaniComponent,
-    RealizovaniComponent
+    RealizovaniComponent,
+    OdgovorComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +62,7 @@ import { RealizovaniComponent } from './realizovani/realizovani.component';
     AdminModule
   ],
   providers: [],
+  entryComponents: [LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

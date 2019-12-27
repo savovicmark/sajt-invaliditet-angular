@@ -114,4 +114,12 @@ export class AppEffects {
       catchError(err => of(new fromActions.UserPostErrorAction()))
     ))
   );
+  @Effect()
+  LoginUser$ = this.actions$.pipe(
+    ofType<fromActions.LogInUserAction>(fromActions.AppActionTypes.LogInUser),
+    exhaustMap(action => this.userService.loginUser(action.payload.username, action.payload.password).pipe(
+      map(user => new fromActions.UserLoggedInAction({user})),
+      catchError(err => of(new fromActions.UserLogInErrorAction()))
+    ))
+  );
 }

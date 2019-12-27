@@ -6,9 +6,14 @@
   </div>
   <div class="comment" fxLayout="column">
     <p class="text">{{comment?.text}}</p>
-    <button mat-icon-button (click)="odgovor = !odgovor">
-      <mat-icon>reply</mat-icon>
-    </button>
+    <div fxLayout fxLayoutGap="50px">
+      <button mat-icon-button (click)="odgovor = !odgovor">
+        <mat-icon>reply</mat-icon>
+      </button>
+      <button mat-icon-button (click)="deleteComment(comment._id)">
+        <mat-icon>delete_forever</mat-icon>
+      </button>
+    </div>
   </div>
   <div *ngIf="odgovor">
     <mat-form-field>
@@ -17,18 +22,18 @@
           cdkTextareaAutosize
           cdkAutosizeMinRows="1"
           cdkAutosizeMaxRows="5"></textarea>
-          <button mat-raised-button color="primary" matSuffix (click)="sendReply(comment.user._id, comment._id)">Posalji</button>
+          <button mat-raised-button color="primary" matSuffix (click)="sendReply(comment._id)">Posalji</button>
     </mat-form-field>
   </div>
   <mat-divider></mat-divider>
-  <div class="odgovor" *ngFor="let odg of comment?.replies">
-    <p class="bold">{{odg.user.username}}</p>
+  <!--<div class="odgovor" *ngFor="let odg of comment?.replies; let i = index">
+    <p class="bold">{{odg.user?.username}}</p>
     <div class="comment" fxLayout="column">
       <p class="text">{{odg.text}}</p>
-      <button mat-icon-button (click)="odgovor = !odgovor">
-        <mat-icon>reply</mat-icon>
-      </button>
     </div>
     <mat-divider inline="true"></mat-divider>
+  </div>-->
+  <div *ngFor="let reply of comment?.replies"> <!--user ce bit iz storea-->
+    <app-odgovor [reply]="reply" [commentId]="comment._id"></app-odgovor>
   </div>
 </div>

@@ -6,9 +6,12 @@ import { ActivatedRoute } from '@angular/router';
 import { map, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../app-store/app.reducers';
-import { selectArticleById, selectAllCommentsForArticle } from '../app-store/app.selectors';
+import { selectArticleById, selectAllCommentsForArticle, selectUser } from '../app-store/app.selectors';
 import { LoadArticleByIdAction, PostCommentAction } from '../app-store/app.actions';
 import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material';
+import { LoginComponent } from '../login/login.component';
+import { UserModel } from '../Models/user.model';
 
 @Component({
   selector: 'app-one-article',
@@ -22,9 +25,11 @@ export class OneArticleComponent implements OnInit {
   viewComments = false;
   comments: CommentModel[];
   postComment: FormControl = new FormControl('');
+  user: UserModel;
 
   constructor(private route: ActivatedRoute,
-              private store: Store<AppState>) { }
+              private store: Store<AppState>,
+              private dialog: MatDialog) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => this.article = data.article);
@@ -32,6 +37,7 @@ export class OneArticleComponent implements OnInit {
       map(params => params.articleId),
       switchMap(articleId => this.store.select(selectAllCommentsForArticle(articleId)))
     ).subscribe(comments => this.comments = comments);
+    this.store.pipe(select(selectUser)).subscribe(user => this.user = user);
   }
 
   toggleComments() {
@@ -42,9 +48,15 @@ export class OneArticleComponent implements OnInit {
     this.store.dispatch(new PostCommentAction({comment: {
       text: this.postComment.value,
       articleId: this.article._id,
-      userId: '5df07374cab84d18e8a28366'
+      userId: this.user._id // ovo ce ic iz storea user
     }}));
     this.postComment.reset();
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(LoginComponent, {
+      width: '400px'
+    });
   }
 
 }

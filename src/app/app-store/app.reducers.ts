@@ -68,6 +68,7 @@ export function commentReducer(state = commentInitialState, action: appActions.A
 export function userReducer(state = userInitialState, action: appActions.AppActions): UserModel {
     switch (action.type) {
       case appActions.AppActionTypes.UserPosted:
+      case appActions.AppActionTypes.UserLoggedIn:
         return {...state, ...action.payload.user };
       default: {
         return state;

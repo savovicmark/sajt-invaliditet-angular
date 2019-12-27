@@ -12,9 +12,7 @@
   <mat-card-content>
     <p>{{article?.text}}</p>
     <div *ngIf="viewComments">
-      <div *ngFor="let comment of comments">
-        <app-komentar [comment]="comment"></app-komentar>
-      </div>
+      <button mat-raised-button (click)="openDialog()" color="primary" id="prijava">Prijava za komentarisanje</button>
       <mat-form-field color="primary">
         <mat-label>Posalji komentar</mat-label>
         <textarea matInput
@@ -24,6 +22,9 @@
             cdkAutosizeMaxRows="5"></textarea>
         <button mat-raised-button matSuffix color="primary" (click)="postNewComment()">Posalji</button>
       </mat-form-field>
+      <div *ngFor="let comment of comments">
+        <app-komentar [comment]="comment"></app-komentar>
+      </div>
     </div>
   </mat-card-content>
   <mat-card-actions fxLayout fxLayoutAlign="center end" fxLayoutGap="15%">

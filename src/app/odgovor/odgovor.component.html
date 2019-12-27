@@ -1,0 +1,28 @@
+<div class="odgovor">
+  <div fxLayout fxLayoutAlign="start center" fxLayoutGap="10px">
+    <mat-icon>person</mat-icon>
+    <p class="bold">{{reply?.user?.username}}</p>
+  </div>
+  <div class="comment" fxLayout="column">
+    <p class="text">{{reply.text}}</p>
+    <div fxLayout fxLayoutGap="50px">
+      <button mat-icon-button (click)="odgovor = !odgovor">
+        <mat-icon>reply</mat-icon>
+      </button>
+      <button mat-icon-button (click)="deleteReply()">
+        <mat-icon>delete_forever</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div *ngIf="odgovor">
+    <mat-form-field>
+    <mat-label>Odgovori...</mat-label>
+    <textarea matInput [formControl]="odg"
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="5"></textarea>
+          <button mat-raised-button color="primary" matSuffix (click)="sendReply()">Posalji</button>
+    </mat-form-field>
+  </div>
+  <mat-divider inline="true"></mat-divider>
+</div>

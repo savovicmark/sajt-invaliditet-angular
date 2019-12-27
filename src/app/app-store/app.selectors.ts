@@ -1,5 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { ArticleState, selectArticleAll, selectArticleEntities, CommentState, selectCommentAll } from './app.reducers';
+import { UserModel } from '../Models/user.model';
 
 export const selectArticleState = createFeatureSelector<ArticleState>('articles');
 export const selectArticles = createSelector( // array
@@ -44,5 +45,10 @@ export const selectAllCommentsForArticle = (articleId: string) => createSelector
   selectCommentsArr,
   comments => comments.filter(comment => comment.article === articleId)
 );
+
+// =========================================================================================
+
+export const selectUser = createFeatureSelector<UserModel>('user');
+
 
 

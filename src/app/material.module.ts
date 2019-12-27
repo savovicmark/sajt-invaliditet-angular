@@ -11,7 +11,8 @@ import * as material from '@angular/material';
     material.MatInputModule,
     material.MatRadioModule,
     material.MatCardModule,
-    material.MatIconModule
+    material.MatIconModule,
+    material.MatDialogModule
   ],
   exports: [
     material.MatToolbarModule,
@@ -22,7 +23,8 @@ import * as material from '@angular/material';
     material.MatInputModule,
     material.MatRadioModule,
     material.MatCardModule,
-    material.MatIconModule
+    material.MatIconModule,
+    material.MatDialogModule
   ]
 })
 export class MaterialModule { }

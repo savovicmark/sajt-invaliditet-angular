@@ -204,6 +204,20 @@ export class UserPostErrorAction implements Action {
 
 // ========= za login ostalo da uradim, i da prepravim reducer poslije
 
+export class LogInUserAction implements Action {
+  readonly type = AppActionTypes.LogInUser;
+  constructor(public payload: {username: string, password: string}) {}
+}
+
+export class UserLoggedInAction implements Action {
+  readonly type = AppActionTypes.UserLoggedIn;
+  constructor(public payload: {user: UserModel}) {}
+}
+
+export class UserLogInErrorAction implements Action {
+  readonly type = AppActionTypes.LogInError;
+}
+
 export type AppActions = LoadAllArticlesAction
                         | AllArticlesLoadedAction
                         | AllArticlesLoadErrorAction
@@ -236,4 +250,7 @@ export type AppActions = LoadAllArticlesAction
                         | ArticleDeleteError
                         | PostUserAction
                         | UserPostedAction
-                        | UserPostErrorAction;
+                        | UserPostErrorAction
+                        | LogInUserAction
+                        | UserLoggedInAction
+                        | UserLogInErrorAction;
